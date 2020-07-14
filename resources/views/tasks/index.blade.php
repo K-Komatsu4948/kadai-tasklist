@@ -25,6 +25,6 @@
     @endif
     
     {{-- 作成ページへのリンク --}}
-    {!! link_to_route('tasks.create', 'タスク一覧', [], ['class' => 'btn btn-primary']) !!}
+    {!! link_to_route('tasks.create', '新規作成', [], ['class' => 'btn btn-primary']) !!}
 
 @endsection
