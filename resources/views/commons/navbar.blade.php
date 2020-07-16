@@ -10,9 +10,9 @@
         <div class="collapse navbar-collapse" id="nav-bar">
         　　<ul class="navbar-nav mr-auto"></ul>
         　　<ul class="navbar-nav">
-        　　    @if (Auth::check()
+        　　  @if (Auth::check())
         　　      <li class="nav-item dropdown">
-                    <ul class="dropdown-menu dropdown-menu-right">
+                    <ul class="dropdown-right">
                         {{-- ログアウトへのリンク --}}
                         <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
                     </ul>
@@ -20,9 +20,9 @@
               @else
                 <ul class="nav navbar-nav navbar-right">
                     {{-- ユーザ登録ページへのリンク --}}
-                    <li>{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('signup.get', 'Signup', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ログインページへのリンク --}}
-                    <li><a href="#">Login</a></li>
+                    <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
                 </ul>
               @endif
                 
