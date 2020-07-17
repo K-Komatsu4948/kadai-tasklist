@@ -8,14 +8,15 @@
         </button>
         
         <div class="collapse navbar-collapse" id="nav-bar">
-        　　<ul class="navbar-nav mr-auto"></ul>
-        　　<ul class="navbar-nav">
-        　　  @if (Auth::check())
-        　　      <li class="nav-item dropdown">
-                    <ul class="dropdown-right">
-                        {{-- ログアウトへのリンク --}}
-                        <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
-                    </ul>
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+                @if (Auth::check())
+                <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            {{-- ログアウトへのリンク --}}
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                        </ul>
                 </li>
               @else
                 <ul class="nav navbar-nav navbar-right">

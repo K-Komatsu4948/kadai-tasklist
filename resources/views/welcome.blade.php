@@ -2,7 +2,7 @@
 
 @section('content')
     @if (Auth::check())
-    　　{{ Auth::user()->name }}
+        {{ Auth::user()->name }}
     @else
     <div class="center jumbotron">
         <div class="text-center">
@@ -11,18 +11,19 @@
             {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
         </div>
     </div>
+    @endif
 @endsection
 !DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <title>Task</title>
-
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        
         <!-- Styles -->
         <style>
             html, body {
