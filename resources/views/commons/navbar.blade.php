@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                @if (Auth::check())
+                @if  (Auth::check())
                 <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -18,6 +18,7 @@
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
                         </ul>
                 </li>
+                <li class="nav-item">{!! link_to_route('tasks.create', '新規作成', [], ['class' => 'nav-link']) !!}</l
               @else
                 <ul class="nav navbar-nav navbar-right">
                     {{-- ユーザ登録ページへのリンク --}}
@@ -26,8 +27,6 @@
                     <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
                 </ul>
               @endif
-                
-        　　  　  <li class="nav-item">{!! link_to_route('tasks.create', '新規作成', [], ['class' => 'nav-link']) !!}</li>
             </ul>
     　　</div>
     </nav>

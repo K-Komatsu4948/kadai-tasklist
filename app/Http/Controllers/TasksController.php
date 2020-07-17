@@ -81,12 +81,17 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = Task::findOrFail($id);
-        
+        if (\Auth::id() === $task->user_id) {
+            
         // 詳細ビューでそれを表示
         return view('tasks.show', [
             'task' => $task,
         ]);
+        }
+        
+        return redirect('/');
+        
+
     }
 
     /**
@@ -97,12 +102,13 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
-        
-        // 編集ビューでそれを表示
-        return view('tasks.edit', [
+        if (\Auth::id() === $task->user_id) {
+            
+            return view('tasks.edit', [
             'task' => $task,
         ]);
+        }
+        return redirect('/');
     }
 
     /**
@@ -124,6 +130,8 @@ class TasksController extends Controller
         $task->content = $request->content;
         $task->save();
         
+        
+        
         // トップページへリダイレクトさせる
         return redirect('/');
     }
@@ -136,9 +144,13 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        $task = Task::findOrFail($id);
-        // タスクを削除
-        $task->delete();
+        if (\Auth::id() === $task->user_id) {
+            $task->delete();
+            
+            return view('tasks.destroy', [
+            'task' => $task,
+            ]);
+        }
         
         return redirect('/');
     }
