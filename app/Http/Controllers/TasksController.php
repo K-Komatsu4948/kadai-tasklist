@@ -26,8 +26,11 @@ class TasksController extends Controller
                 'user' => $user,
                 'tasks' => $tasks,
             ];
+            
+            return view('tasks.index', [
+            'task' => $tasks,
+            ]);
         }
-        
         // Welcomeビューでそれらを表示
         return view('welcome', $data);
     }
@@ -63,6 +66,7 @@ class TasksController extends Controller
         $task = new Task;
         $task->status = $request->status;
         $task->content = $request->content;
+        $task->user_id = \Auth::id();
         $task->save();
         
         // トップページへリダイレクトさせる
