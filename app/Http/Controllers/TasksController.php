@@ -81,8 +81,6 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        if (\Auth::id() === $task->user_id) {
-            
         $task = new Task;
         // 詳細ビューでそれを表示
         return view('tasks.show', [
