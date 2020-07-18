@@ -82,10 +82,10 @@ class TasksController extends Controller
     public function show($id)
     {
         $task = new Task;
-        // 詳細ビューでそれを表示
-        return view('tasks.show', [
+        if (\Auth::id() === $task->user_id) {
+          return view('tasks.show', [
             'task' => $task,
-        ]);
+          ]);
         }
         
         return redirect('/');
@@ -101,6 +101,7 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
+        $task = new Task;
         if (\Auth::id() === $task->user_id) {
             
             return view('tasks.edit', [
