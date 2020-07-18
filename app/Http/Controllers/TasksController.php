@@ -144,6 +144,7 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
+        $task = Task::findOrFail($id);
         if (\Auth::id() === $task->user_id) {
             $task->delete();
             
